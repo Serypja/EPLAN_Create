@@ -17,50 +17,51 @@ namespace Test.Action_test
 
         public bool Execute(ActionCallingContext oActionCallingContext)
         {
-            /*
-             * SelectionSet Set = new SelectionSet();
-            Project CurrentProject = Set.GetCurrentProject(true);
-            string ProjectName = CurrentProject.ProjectName;
-            string ProjectCompanyName = CurrentProject.Properties.PROJ_COMPANYNAME;
-            DateTime ProjectCreationDate = CurrentProject.Properties.PROJ_CREATIONDATE;
-            MessageBox.Show("Название проекта: " + ProjectName + "\n" + "Название фирмы: " + ProjectCompanyName +
-                            "\n" + "Дата создания проекта: " + ProjectCreationDate.ToShortDateString());
-            */
 
-
+            int page_number = 0;
+            
             MessageBox.Show("Создание проэкта", "Окно");
-
-
+            // Создание проэкта
             Project proj = new ProjectManager().CreateProject("$(MD_PROJECTS)\\ProjectFirst.elk", "$(MD_TEMPLATES)\\IEC_bas003.zw9");
 
             // Первый лист
             PagePropertyList pagePropList = new PagePropertyList();
-            pagePropList.DESIGNATION_PLANT = "List_First";
-            pagePropList.DESIGNATION_LOCATION = "New_Schematic";
-            pagePropList.PAGE_COUNTER = 1;
+            //pagePropList.DESIGNATION_PLANT = "List_First";
+            //pagePropList.DESIGNATION_LOCATION = "New_Schematic";
+            pagePropList.PAGE_COUNTER = page_number++;
 
             Page page1 = new Page();
             page1.Create(proj, DocumentTypeManager.DocumentType.TitlePage, pagePropList);
+
+            
 
             MessageBox.Show("Первый проэкт создан", "Окно");
 
             // Второй лист
             PagePropertyList pagePropList1 = new PagePropertyList();
-            pagePropList1.DESIGNATION_PLANT = "List_Circuit";
-            pagePropList1.DESIGNATION_LOCATION = "Lol";
-            pagePropList1.PAGE_COUNTER = 2;
 
-            Page page2 = new Page();
-            page2.Create(proj, DocumentTypeManager.DocumentType.Circuit, pagePropList1);
+            for (int i = 1; i < 5; i++)
+            {
+                
+                //pagePropList1.DESIGNATION_PLANT = "List_Circuit";
+                //pagePropList1.DESIGNATION_LOCATION = "Lol";
+                pagePropList1.PAGE_COUNTER = page_number++;
+
+                Page page2 = new Page();
+                page2.Create(proj, DocumentTypeManager.DocumentType.Circuit, pagePropList1);
+            }
+
+            
+            
 
             MessageBox.Show("Второй проэкт создан", "Окно");
 
 
             // Второй лист
             PagePropertyList pagePropList3 = new PagePropertyList();
-            pagePropList3.DESIGNATION_PLANT = "List_Overview";
-            pagePropList3.DESIGNATION_LOCATION = "XOXOL";
-            pagePropList3.PAGE_COUNTER = 3;
+            //pagePropList3.DESIGNATION_PLANT = "List_Overview";
+            //pagePropList3.DESIGNATION_LOCATION = "XOXOL";
+            pagePropList3.PAGE_COUNTER = page_number++;
 
             Page page3 = new Page();
             page3.Create(proj, DocumentTypeManager.DocumentType.Overview, pagePropList3);
