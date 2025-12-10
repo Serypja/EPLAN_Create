@@ -1,8 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using Eplan.EplApi.ApplicationFramework;
+﻿using Eplan.EplApi.ApplicationFramework;
+using Eplan.EplApi.Base;
 using Eplan.EplApi.DataModel;
 using Eplan.EplApi.HEServices;
+using System;
+using System.Windows.Forms;
 
 namespace Test.Action_test
 {
@@ -51,9 +52,6 @@ namespace Test.Action_test
                 page2.Create(proj, DocumentTypeManager.DocumentType.Circuit, pagePropList1);
             }
 
-            
-            
-
             MessageBox.Show("Второй проэкт создан", "Окно");
 
 
@@ -68,39 +66,7 @@ namespace Test.Action_test
 
             MessageBox.Show("Третий проэкт создан", "Окно");
 
-            /*
-            Page targetPage = null;
-            foreach (Page page in proj.Pages)
-            {
-                if (page.Properties.PAGE_COUNTER == "2") // ищем страницу 2
-                {
-                    targetPage = page;
-                    break;
-                }
-            }
-
-
-            if (targetPage != null)
-            {
-                // Изменяем свойства
-                targetPage.Properties.PAGE_REVISION_APPROVEDBY = "Иванов И.И.";
-                targetPage.Properties.PAGE_DESCRIPTION = "Силовая часть шкафа А1";
-                targetPage.Properties.DESIGNATION_LOCATION = "Power_Supply"; // ← Осторожно! (см. ниже)
-
-                // Пример: дата утверждения (в формате YYYYMMDD)
-                targetPage.Properties.PAGE_REVISION_DATEAPPROVED = "20251206";
-
-                MessageBox.Show("Свойства листа успешно обновлены!");
-            }
-            else
-            {
-                MessageBox.Show("Страница не найдена!");
-            }
-            */
-
-
-
-
+        
 
             return true;
 
